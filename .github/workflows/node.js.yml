@@ -1,7 +1,7 @@
 # 此工作流将对节点依赖项进行全新安装，缓存/恢复这些依赖项，构建源代码，并在不同版本的节点上运行测试
 # 更多信息请参阅：https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
-name: Node.js CI
+名称: Node.js CI
 
 触发:
 推送:
@@ -12,20 +12,17 @@ name: Node.js CI
 作业:
 构建:
 
-运行于: ubuntu-latest
+运行于:       矩阵
+节点版本: [18.x,20.x,22.x]
+        # 请访问 https://nodejs.org/en/about/releases/ 查阅支持的Node.js发布计划
 
-策略:
-      matrix:
-        node-version: [18.x, 20.x, 22.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
-    steps:
+:
     - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+    - 名称: 使用 Node.js ${{matrix.node-version}}
+使用: actions/setup-node@v4
+与:
+节点版本: ${{matrix.node-version}}
+缓存: 'npm'
+    - 运行: npm ci
+    - 运行: npm run build --if-present
+    - 运行: npm test
