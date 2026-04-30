@@ -8,6 +8,10 @@ body {
   margin: 0;
   font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   -webkit-font-smoothing: antialiased;
+  background:
+    radial-gradient(circle at top left, rgba(201, 138, 74, 0.24), transparent 28%),
+    radial-gradient(circle at top right, rgba(155, 203, 143, 0.2), transparent 26%),
+    linear-gradient(180deg, #f7f1e8 0%, #f2ebdf 100%);
 }
 
 #root {
